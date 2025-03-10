@@ -1,5 +1,9 @@
 import streamlit as st
 from rag import generate_answer,process_urls
+import sqlite3
+import streamlit as st
+
+st.write(f"SQLite version: {sqlite3.sqlite_version}")
 
 st.title("Real Estate Research Tool")
 
