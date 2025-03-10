@@ -9,6 +9,17 @@ except ImportError:
     pass  # pysqlite3 not installed, fallback to default
 
 # Now import other libraries
+import os
+import sys
+
+# Force Python to use pysqlite3 instead of old sqlite3
+try:
+    import pysqlite3
+    sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
+except ImportError:
+    pass  # pysqlite3 not installed, fallback to default
+
+# Now import other libraries
 from uuid import uuid4
 from dotenv import load_dotenv
 from pathlib import Path

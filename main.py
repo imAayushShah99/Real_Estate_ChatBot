@@ -4,6 +4,7 @@ import sqlite3
 <<<<<<< HEAD
 import streamlit as st
 
+
 st.write(f"SQLite version: {sqlite3.sqlite_version}")
 =======
 print(sqlite3.sqlite_version)
