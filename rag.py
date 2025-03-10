@@ -1,5 +1,6 @@
 import os
 import sys
+import streamlit as st
 
 # Force Python to use pysqlite3 instead of old sqlite3
 try:
@@ -8,16 +9,6 @@ try:
 except ImportError:
     pass  # pysqlite3 not installed, fallback to default
 
-# Now import other libraries
-import os
-import sys
-
-# Force Python to use pysqlite3 instead of old sqlite3
-try:
-    import pysqlite3
-    sys.modules["sqlite3"] = sys.modules.pop("pysqlite3")
-except ImportError:
-    pass  # pysqlite3 not installed, fallback to default
 
 # Now import other libraries
 from uuid import uuid4
@@ -38,7 +29,7 @@ CHUNK_SIZE=1000
 EMBEDDING_MODEL="Alibaba-NLP/gte-base-en-v1.5"
 VECTOR_STORE_DIR=Path(__file__).parent/"resources/vector_store"
 COLLECTION_NAME="real_estate"
-hf_token = os.getenv("HUGGINGFACEHUB_API_TOKEN")
+hf_token = os.getenv("HUGGINGFACEHUB_API_TOKEN") or st.secrets.get("HUGGINGFACEHUB_API_TOKEN")
 
 # Ensure token is set
 if not hf_token:
